@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+{% form_theme formArticle 'bootstrap_4_layout.html.twig' %}
+{% block body %}
+<h1>
+    {% if editMode %}
+    modifier un article
+    {% else %}
+    creation d'un article
+    {% endif %}
+</h1>
+
+    {{ form_start(formArticle) }}
+    {{ form_row(formArticle.title, {'attr':{'placeholder':"le titre de l' article"}})}}
+    {{ form_row(formArticle.category)}}
+    {{ form_row(formArticle.content, {'attr':{'placeholder':"le contenu de l' article"}})}}
+    {{ form_row(formArticle.image, {'attr':{'placeholder':"l'Url de l' article"}})}}
+    <button type="submit" class="btn btn-success">
+        {% if editMode %}
+        enregistre les modifications
+        {% else %}
+        ajouter les modifications
+        {% endif %}
+        </button>
+    {{ form_end(formArticle) }}
+
+{% endblock %}
